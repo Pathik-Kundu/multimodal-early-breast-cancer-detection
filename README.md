@@ -1,6 +1,3 @@
-Here is your complete, updated `README.md` file wrapped in a single code block so you can easily copy and paste it into GitHub. It now includes dedicated **Built With** and **Core Technical Skills** sections that map out all the languages, frameworks, mathematical methodologies, and toolkits used in your project.
-
-```markdown
 # Dual-Stream Framework for Early Breast Cancer Detection: Synergizing Classical Machine Learning with Deep Autoencoders
 
 > Because why choose between clinical records and medical images when you can leverage both for high-precision diagnostic screening?
