@@ -146,7 +146,3 @@ print(f"Model Training Complete. Test Accuracy: {svm_model.score(X_test_scaled, 
 
 **Shahriar Islam, Abrar Jaman Gazi, Pathik Kundu, Abu Nasir Patwary, and Manzil Ahsan**
 *Department of Computer Science and Engineering, United International University (UIU), Dhaka, Bangladesh.*
-
-```
-
-```
