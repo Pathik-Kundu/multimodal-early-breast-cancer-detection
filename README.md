@@ -80,14 +80,12 @@ The SVM with an RBF kernel proved to be the superior model, balancing near-perfe
 ## 📦 Repository Structure
 
 ```text
-├── data/                   # Dataset pointers and references
-├── notebooks/              # Jupyter/Colab notebooks for training and visualization
-├── src/                    # Source code for tabular pipeline and CAE architecture
-│   ├── preprocessing.py    # VIF, Isolation Forest, SMOTE configurations
-│   ├── models.py           # ML classifiers and PyTorch/Keras Autoencoder definitions
-│   └── evaluation.py       # Confusion matrices, ROC-AUC plotting scripts
-├── README.md               # You are here!
-└── requirements.txt        # Python library dependencies
+├── Image_Data_code.ipynb     # Convolutional Autoencoder for unsupervised image anomaly detection
+├── Tabular_ Data_code.ipynb   # VIF, SMOTE, and classical ML classifiers (SVM, RF, etc.)
+├── Tabular Dataset/
+    └── breast-cancer.csv      # Structured diagnostic clinical dataset
+├── Image Dataset Link Kaggle.txt   #Download image datset from the link
+└── requirements.txt    #requirements.txt for run the codes
 
 ```
 
