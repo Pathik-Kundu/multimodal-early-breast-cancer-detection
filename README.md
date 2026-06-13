@@ -1,3 +1,6 @@
+Here is your complete, updated `README.md` file wrapped in a single code block so you can easily copy and paste it into GitHub. It now includes dedicated **Built With** and **Core Technical Skills** sections that map out all the languages, frameworks, mathematical methodologies, and toolkits used in your project.
+
+```markdown
 # Dual-Stream Framework for Early Breast Cancer Detection: Synergizing Classical Machine Learning with Deep Autoencoders
 
 > Because why choose between clinical records and medical images when you can leverage both for high-precision diagnostic screening?
@@ -6,50 +9,51 @@ This repository contains the official implementation of the **Dual-Stream Framew
 
 ---
 
+## 🛠️ Tech Stack & Skills Summary
+
+### Built With
+* **Languages:** Python (100%)
+* **Deep Learning & Image Processing:** TensorFlow, Keras
+* **Machine Learning & Data Science:** Scikit-Learn, Statsmodels, Imbalanced-Learn (`SMOTE`)
+* **Data Analysis & Visualization:** Pandas, NumPy, Matplotlib, Seaborn
+* **Development Environments:** Jupyter Notebook, Google Colab
+
+### Core Technical Skills Demonstrated
+* **Advanced Data Preprocessing:** Outlier Detection (Isolation Forests), Multicollinearity Mitigation (Variance Inflation Factor), and Synthetic Minority Over-sampling (SMOTE) for dealing with severe class imbalances.
+* **Unsupervised Representation Learning:** Developing and fine-tuning Deep Convolutional Autoencoders (CAEs) specifically tailored for computer vision anomaly detection tasks.
+* **Statistical Modeling & Classification:** Optimization of high-dimensional soft-margin classification boundaries using Support Vector Machines (SVM) paired with non-linear Radial Basis Function (RBF) kernels.
+* **Model Evaluation Engineering:** Comprehensive diagnostics leveraging Confusion Matrices, Receiver Operating Characteristic curves (ROC), and Area Under the Curve (AUC) metrics to optimize clinical specificity.
+
+---
+
 ## 📌 Project Overview
 
-Breast cancer remains a leading cause of global cancer-related mortality. Traditional diagnostic workflows are often prone to human variability, image quality fluctuations, and delayed timelines.
+Breast cancer remains a leading cause of global cancer-related mortality. Traditional diagnostic workflows are often prone to human variability, image quality fluctuations, and delayed timelines. 
 
 This project addresses these challenges by implementing a **Dual-Stream Architecture**:
-
 1. **The Clinical Feature Stream:** Processes tabular clinical data (e.g., WDBC dataset) using a rigorous preprocessing pipeline—including multicollinearity reduction via Variance Inflation Factor (VIF), outlier removal via Isolation Forests, and minority class oversampling via SMOTE—culminating in an optimized Support Vector Machine (SVM) classifier.
 2. **The Medical Image Stream:** Addresses data scarcity (lack of annotated malignant images) by using a Convolutional Autoencoder (CAE) for **Unsupervised Anomaly Detection**. The model learns the structural essence of healthy anatomy and flags anomalous (cancerous) tissues based on reconstruction error.
 
 ---
 
-## 🛠️ Framework Architecture & Methodology
+## 🔬 Framework Architecture & Methodology
 
 ### 1. Clinical Feature Stream (Tabular Pipeline)
-
 To ensure statistical robustness and prevent model instability from highly correlated features, the structured data undergoes a seven-stage pipeline:
 
 * **Multicollinearity Reduction:** Features with a Variance Inflation Factor ($VIF$) greater than 10 are systematically removed to prevent variance inflation of regression coefficients:
-
-$$VIF_{i} = \frac{1}{1-R_{i}^{2}}$$
-
-
+    $$VIF_{i} = \frac{1}{1-R_{i}^{2}}$$
 * **Outlier Detection:** Handled via the **Isolation Forest** algorithm to eliminate measurement artifacts while preserving crucial biological anomalies.
 * **Class Balancing (SMOTE):** Corrects class imbalance (~63% Benign vs. ~37% Malignant) on the training set by interpolating new minority samples:
-
-$$x_{new} = x_{i} + \lambda \times (x_{neighbor} - x_{i})$$
-
-
+    $$x_{new} = x_{i} + \lambda \times (x_{neighbor} - x_{i})$$
 * **Classification:** Implements an SVM minimizing the soft-margin objective function:
-
-$$\min_{w,b,\zeta}\frac{1}{2}||w||^{2}+C\sum_{i=1}^{n}\zeta_{i}$$
-
-
-
-Utilizes a Radial Basis Function (RBF) kernel, $K(x,x^{\prime})=\exp(-\gamma||x-x^{\prime}||^{2})$, to effectively handle non-linear decision boundaries.
+    $$\min_{w,b,\zeta}\frac{1}{2}||w||^{2}+C\sum_{i=1}^{n}\zeta_{i}$$
+    Utilizes a Radial Basis Function (RBF) kernel, $K(x,x^{\prime})=\exp(-\gamma||x-x^{\prime}||^{2})$, to effectively handle non-linear decision boundaries.
 
 ### 2. Medical Image Stream (Deep Learning Pipeline)
-
 * **Convolutional Autoencoder (CAE):** Trained *exclusively* on normal (benign) images. When presented with an anomaly (malignancy), the reconstruction fidelity drops.
 * **Objective Function:** Minimizes Mean Squared Error (MSE) loss:
-
-$$\mathcal{L}(X,\hat{X})=\frac{1}{N}\sum_{i=1}^{N}||X_{i}-\hat{X_{i}}||^{2}$$
-
-
+    $$\mathcal{L}(X,\hat{X})=\frac{1}{N}\sum_{i=1}^{N}||X_{i}-\hat{X_{i}}||^{2}$$
 * **Latent Space Exploration:** Bottleneck features are compressed and clustered using K-Means ($k=2$) and visualized via Principal Component Analysis (PCA) to evaluate unsupervised class separation.
 
 ---
@@ -57,11 +61,10 @@ $$\mathcal{L}(X,\hat{X})=\frac{1}{N}\sum_{i=1}^{N}||X_{i}-\hat{X_{i}}||^{2}$$
 ## 📈 Performance & Key Results
 
 ### Tabular Stream Performance Comparison
-
 The SVM with an RBF kernel proved to be the superior model, balancing near-perfect sensitivity with flawless specificity.
 
 | Model | Accuracy | False Negatives (FN) | False Positives (FP) | AUC Score |
-| --- | --- | --- | --- | --- |
+| :--- | :---: | :---: | :---: | :---: |
 | **SVM (RBF Kernel)** | **97.37%** | **3** | **0** | **0.99** |
 | Logistic Regression | 96.49% | 3 | 1 | 1.00 |
 | Random Forest | 96.49% | 4 | 0 | 0.99 |
@@ -71,7 +74,6 @@ The SVM with an RBF kernel proved to be the superior model, balancing near-perfe
 > **Key Takeaway:** The SVM model achieved a perfect specificity (1.00), meaning **zero** healthy patients were misdiagnosed with false positives, effectively eliminating unnecessary diagnostic stress.
 
 ### Image Stream Performance
-
 * **Reconstruction Fidelity:** Reached an exceptional **99% similarity score** on both training and testing datasets for benign tissue structure.
 * **Dynamic Thresholding:** Successfully flagged structural variations as statistical anomalies using a dynamic threshold ($\mu_{train\_loss} + \sigma_{train\_loss}$).
 
@@ -98,7 +100,7 @@ The SVM with an RBF kernel proved to be the superior model, balancing near-perfe
 Ensure you have Python 3.8+ installed. Clone this repository and install the mandatory requirements:
 
 ```bash
-git clone https://github.com/Pathik-Kundu/multimodal-early-breast-cancer-detection.git
+git clone [https://github.com/Pathik-Kundu/multimodal-early-breast-cancer-detection.git](https://github.com/Pathik-Kundu/multimodal-early-breast-cancer-detection.git)
 cd multimodal-early-breast-cancer-detection
 pip install -r requirements.txt
 
@@ -113,7 +115,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
 # Load dataset
-data = pd.read_csv('your_wdbc_dataset.csv')
+data = pd.read_csv('data/breast-cancer.csv')
 data.drop("id", axis=1, inplace=True)
 data["diagnosis"] = data["diagnosis"].map({"M": 1, "B": 0})
 
@@ -147,3 +149,7 @@ print(f"Model Training Complete. Test Accuracy: {svm_model.score(X_test_scaled, 
 
 **Shahriar Islam, Abrar Jaman Gazi, Pathik Kundu, Abu Nasir Patwary, and Manzil Ahsan**
 *Department of Computer Science and Engineering, United International University (UIU), Dhaka, Bangladesh.*
+
+```
+
+```
